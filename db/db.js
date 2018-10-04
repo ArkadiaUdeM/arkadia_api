@@ -4,7 +4,7 @@ const keys = require('../config/keys')
 mongoose.Promise = global.Promise
 
 require('../api/models/project')
-require('../api/models/opcion')
+require('../api/models/sistema')
 
 const db = mongoose.connect(keys.mongoURI)
 

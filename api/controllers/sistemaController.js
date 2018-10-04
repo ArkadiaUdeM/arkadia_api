@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
-const Opcion = mongoose.model('Opcion')
+const Sistema = mongoose.model('Sistema')
 const utils = require('../handlers/utils')
 
 exports.findAll = function(req, res) {
-  Opcion.find(function(err, opcion) {
-    utils.show(res, err, opcion)
+  Sistema.find(function(err, sistema) {
+    utils.show(res, err, sistema)
   })
 }
 
@@ -13,24 +13,24 @@ exports.addPackage = function(req, res) {
 
   var objPaquete = { nombrePaquete, descripcion, historiasDeUsuario };
 
-  Opcion.findOneAndUpdate(
-    { _id: req.params.opcionId }, 
+  Sistema.findOneAndUpdate(
+    { _id: req.params.sistemaId }, 
     { $push: { paquetes: objPaquete } },
-    function (err, opcion) { utils.show(res, err, opcion) }
+    function (err, sistema) { utils.show(res, err, sistema) }
   );
 }
 
 exports.findOne = function(req, res) {
-  Opcion.findById(req.params.opcionId, function(err, opcion) {
-    utils.show(res, err, opcion)
+  Sistema.findById(req.params.sistemaId, function(err, sistema) {
+    utils.show(res, err, sistema)
   })
 }
 
 exports.create = function(req, res) {
   const { nombreSistema, descripcion, paquetes } = req.body
-  const opcion = new Opcion({ nombreSistema, descripcion, paquetes })
+  const sistema = new Sistema({ nombreSistema, descripcion, paquetes })
 
-  opcion.save(function(err, opcion) {
-    utils.show(res, err, opcion)
+  sistema.save(function(err, sistema) {
+    utils.show(res, err, sistema)
   })
 }

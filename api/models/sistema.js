@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const OpcionSchema = new Schema({
+const SistemaSchema = new Schema({
   nombreSistema: String,
   descripcion: String,
   paquetes: [
@@ -17,10 +17,10 @@ const OpcionSchema = new Schema({
     }
   ]
 
-}, { collection: 'opciones' })
+}, { collection: 'sh_sistema' })
 
-OpcionSchema.virtual('url').get(function() {
-  return '/opcion/' + this._id
+SistemaSchema.virtual('url').get(function() {
+  return '/sistema/' + this._id
 })
 
-module.exports = mongoose.model('Opcion', OpcionSchema)
+module.exports = mongoose.model('Sistema', SistemaSchema)
