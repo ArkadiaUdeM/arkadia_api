@@ -16,7 +16,9 @@ exports.addPackage = function(req, res) {
   Sistema.findOneAndUpdate(
     { _id: req.params.sistemaId }, 
     { $push: { paquetes: objPaquete } },
-    function (err, sistema) { utils.show(res, err, sistema) }
+    function (err, sistema) {
+      utils.show(res, err, sistema)
+    }
   );
 }
 
