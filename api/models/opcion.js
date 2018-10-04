@@ -17,10 +17,10 @@ const OpcionSchema = new Schema({
     }
   ]
 
-})
+}, { collection: 'opciones' })
 
 OpcionSchema.virtual('url').get(function() {
-  return '/opciones/' + this._id
+  return '/opcion/' + this._id
 })
 
 module.exports = mongoose.model('Opcion', OpcionSchema)
