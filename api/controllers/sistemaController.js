@@ -36,3 +36,25 @@ exports.create = function(req, res) {
     utils.show(res, err, sistema)
   })
 }
+
+exports.addHistoriadeUsuario = function (req, res) {
+  const { nombreHistoria, referencia } = req.body
+
+  var objHistoria = { nombreHistoria, referencia };
+
+  Sistema.findOneAndUpdate(
+    { 
+      _id: req.params.sistemaId,
+      "paquetes._id": req.params.paqueteId
+    },
+    { 
+      $push: { 
+        "paquetes.0.historiasDeUsuario": objHistoria
+      } 
+    },
+    function (err, sistema) {
+      utils.show(res, err, sistema)
+    }
+  );
+
+}
