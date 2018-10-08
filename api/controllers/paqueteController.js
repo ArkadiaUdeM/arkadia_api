@@ -13,6 +13,16 @@ exports.findAll = function(req, res) {
   })
 }
 
+exports.findOne = function (req, res) {
+  Paquete.findById(req.params.paqueteId)
+    .populate('historiasDeUsuario')
+    .exec(function (err, paquete) {
+      utils.show(res, err, paquete)
+    })
+}
+
+
+
 exports.create = function (req, res) {
   const { nombre, descripcion } = req.body
   const { proyectoId } = req.params
