@@ -1,11 +1,13 @@
 const express = require('express')
 
-const projectRoutes = require('./projectRoutes')
-const sistemaRoutes = require('./sistemaRoutes')
+const proyectoRoutes = require('./proyectoRoutes')
+const paqueteRoutes = require('./paqueteRoutes')
+const historiaDeUsuarioRoutes = require('./historiaDeUsuarioRoutes')
 
 const router = express.Router()
 
-router.use('/api', projectRoutes)
-router.use('/api', sistemaRoutes)
+router.use('/api', proyectoRoutes)
+router.use('/api', paqueteRoutes)
+router.use('/api', historiaDeUsuarioRoutes)
 
 module.exports = router

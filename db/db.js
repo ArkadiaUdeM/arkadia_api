@@ -3,8 +3,9 @@ const keys = require('../config/keys')
 
 mongoose.Promise = global.Promise
 
-require('../api/models/project')
-require('../api/models/sistema')
+require('../api/models/proyecto')
+require('../api/models/paquete')
+require('../api/models/historiaDeUsuario')
 
 const db = mongoose.connect(keys.mongoURI)
 
