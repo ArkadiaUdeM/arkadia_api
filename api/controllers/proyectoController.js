@@ -10,7 +10,7 @@ exports.findAll = function(req, res) {
 
 exports.findOne = function(req, res) {
   Proyecto.findById(req.params.proyectoId)
-    .populate('Paquete')
+    .populate('paquete')
     .exec(function (err, proyecto) {
       utils.show(res, err, proyecto)
     })

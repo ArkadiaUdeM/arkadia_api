@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const ObjectId = Schema.ObjectId
+const ObjectId = Schema.Types.ObjectId;
 
 const Paquete = new Schema({
   nombre: String,
@@ -12,8 +12,5 @@ const Paquete = new Schema({
   },
 }, { collection: 'sh_paquetes'})
 
-Paquete.virtual('url').get(function() {
-  return '/paquetes/' + this._id
-})
 
 module.exports = mongoose.model('Paquete', Paquete)

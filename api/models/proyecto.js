@@ -4,10 +4,15 @@ const Schema = mongoose.Schema
 const Proyecto = new Schema({
   nombre: String,
   descripcion: String,
-}, { collection: 'sh_proyectos'})
+}, { 
+  collection: 'sh_proyectos', 
+  toJSON: { virtuals: true }
+})
 
-Proyecto.virtual('url').get(function() {
-  return '/proyecto/' + this._id
+Proyecto.virtual('paquetes', {
+  ref: 'Paquete',
+  localField: 'nombre',
+  foreignField: 'proyecto'
 })
 
 module.exports = mongoose.model('Proyecto', Proyecto)
