@@ -10,7 +10,17 @@ const Paquete = new Schema({
     ref: 'Proyecto',
     required: true,
   },
-}, { collection: 'sh_paquetes'})
+},
+{
+  collection: 'sh_paquetes',
+  toJSON: { virtuals: true }
+}
+)
 
+Paquete.virtual('historiasDeUsuario', {
+  ref: 'HistoriaDeUsuario',
+  localField: '_id',
+  foreignField: 'paquete'
+})
 
 module.exports = mongoose.model('Paquete', Paquete)
