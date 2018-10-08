@@ -11,7 +11,7 @@ const Proyecto = new Schema({
 
 Proyecto.virtual('paquetes', {
   ref: 'Paquete',
-  localField: 'nombre',
+  localField: '_id',
   foreignField: 'proyecto'
 })
 
