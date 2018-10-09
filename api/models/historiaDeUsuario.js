@@ -4,7 +4,6 @@ const ObjectId = Schema.Types.ObjectId
 
 const HistoriaDeUsuario = new Schema({
   nombre: String,
-  descripcion: String,
   paquete: {
     type: ObjectId,
     ref: 'Paquete',

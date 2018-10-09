@@ -4,9 +4,11 @@ const Paquete = mongoose.model('Paquete')
 const utils = require('../handlers/utils')
 
 exports.findAll = function(req, res) {
-  HistoriaDeUsuario.find(function(err, historiaDeUsuario) {
-    utils.show(res, err, historiaDeUsuario)
-  })
+  Paquete.findById(req.params.paqueteId)
+    .populate('historiasDeUsuario')
+    .exec(function (err, paquete) {
+      utils.show(res, err, paquete.historiasDeUsuario)
+    })
 }
 
 exports.create = function (req, res) {

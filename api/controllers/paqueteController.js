@@ -4,13 +4,11 @@ const Proyecto = mongoose.model('Proyecto')
 const utils = require('../handlers/utils')
 
 exports.findAll = function(req, res) {
-  Paquete.find({}).populate({
-    path: 'historiasDeUsuario',
-    select: 'nombre',
-  })
-  .exec(function (err, paquetes) {
-    utils.show(res, err, paquetes)
-  })
+  Proyecto.findById(req.params.proyectoId)
+    .populate('paquetes')
+    .exec(function (err, proyecto) {
+      utils.show(res, err, proyecto.paquetes)
+    })
 }
 
 exports.findOne = function (req, res) {
@@ -20,8 +18,6 @@ exports.findOne = function (req, res) {
       utils.show(res, err, paquete)
     })
 }
-
-
 
 exports.create = function (req, res) {
   const { nombre, descripcion } = req.body

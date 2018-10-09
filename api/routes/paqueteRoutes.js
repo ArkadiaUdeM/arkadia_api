@@ -6,6 +6,6 @@ const router = express.Router()
 router.get('/proyectos/:proyectoId/paquetes', paquete.findAll)
 router.post('/proyectos/:proyectoId/paquetes', paquete.create)
 
-router.get('/paquetes/:paqueteId/historias', paquete.findOne)
+router.get('/paquetes/:paqueteId', paquete.findOne)
 
 module.exports = router
