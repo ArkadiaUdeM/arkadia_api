@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise
 require('../api/models/proyecto')
 require('../api/models/paquete')
 require('../api/models/historiaDeUsuario')
+require('../api/models/rol')
 
 const db = mongoose.connect(keys.mongoURI)
 
