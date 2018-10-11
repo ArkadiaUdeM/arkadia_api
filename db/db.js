@@ -8,6 +8,11 @@ require('../api/models/paquete')
 require('../api/models/historiaDeUsuario')
 require('../api/models/rol')
 
-const db = mongoose.connect(keys.mongoURI)
+const db = mongoose.connect(
+  keys.mongoURI,
+  {
+    useNewUrlParser: true,
+  },
+)
 
 module.exports = db

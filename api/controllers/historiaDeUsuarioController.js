@@ -1,27 +1,28 @@
 const mongoose = require('mongoose')
+
 const HistoriaDeUsuario = mongoose.model('HistoriaDeUsuario')
 const Paquete = mongoose.model('Paquete')
 const utils = require('../handlers/utils')
 
 exports.findAll = function(req, res) {
-  Paquete.findById(req.params.paqueteId)
-    .populate('historiasDeUsuario')
-    .exec(function (err, paquete) {
-      utils.show(res, err, paquete.historiasDeUsuario)
-    })
+  HistoriaDeUsuario.find({
+    paquete: req.params.paqueteId,
+  }).exec(function(err, paquete) {
+    utils.show(res, err, paquete)
+  })
 }
 
-exports.create = function (req, res) {
+exports.create = function(req, res) {
   const { nombre, descripcion } = req.body
   const { paqueteId } = req.params
   const paquete = new Paquete({ _id: paqueteId })
   const historiaDeUsuario = new HistoriaDeUsuario({
-    nombre, 
+    nombre,
     descripcion,
     paquete,
   })
 
-  historiaDeUsuario.save(function (err, historiaDeUsuario) {
+  historiaDeUsuario.save(function(err, historiaDeUsuario) {
     utils.show(res, err, historiaDeUsuario)
   })
 }
