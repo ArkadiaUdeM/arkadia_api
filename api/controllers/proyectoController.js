@@ -22,3 +22,12 @@ exports.create = function(req, res) {
     utils.show(res, err, proyecto)
   })
 }
+
+exports.update = function(req, res) {
+  Proyecto.findByIdAndUpdate({ _id: req.params.proyectoId }, req.body, { new: true }, function(
+    err,
+    proyecto,
+  ) {
+    utils.show(res, err, proyecto)
+  })
+}

@@ -5,6 +5,7 @@ const Proyecto = new Schema(
   {
     nombre: String,
     descripcion: String,
+    icono: String,
   },
   {
     collection: 'sh_proyectos',
