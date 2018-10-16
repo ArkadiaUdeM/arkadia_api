@@ -6,9 +6,11 @@ const utils = require('../handlers/utils')
 exports.findAll = function(req, res) {
   Paquete.find({
     proyecto: req.params.proyectoId,
-  }).exec(function(err, paquete) {
-    utils.show(res, err, paquete)
   })
+    .populate('historiasDeUsuario')
+    .exec(function(err, paquete) {
+      utils.show(res, err, paquete)
+    })
 }
 
 exports.findOne = function(req, res) {

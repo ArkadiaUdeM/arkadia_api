@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "precommit": "pretty-quick --staged"
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +19,10 @@
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3",
     "pretty-quick": "^1.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

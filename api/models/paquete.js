@@ -14,7 +14,14 @@ const Paquete = new Schema(
   },
   {
     collection: 'sh_paquetes',
+    toJSON: { virtuals: true },
   },
 )
+
+Paquete.virtual('historiasDeUsuario', {
+  ref: 'HistoriaDeUsuario',
+  localField: '_id',
+  foreignField: 'paquete',
+})
 
 module.exports = mongoose.model('Paquete', Paquete)
