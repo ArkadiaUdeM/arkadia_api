@@ -33,3 +33,12 @@ exports.create = function(req, res) {
     utils.show(res, err, paquete)
   })
 }
+
+exports.update = function(req, res) {
+  Paquete.findByIdAndUpdate({ _id: req.params.paqueteId }, req.body, { new: true }, function(
+    err,
+    paquete,
+  ) {
+    utils.show(res, err, paquete)
+  })
+}

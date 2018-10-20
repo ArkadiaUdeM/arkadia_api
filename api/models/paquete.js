@@ -6,6 +6,7 @@ const Paquete = new Schema(
   {
     nombre: String,
     descripcion: String,
+    icono: String,
     proyecto: {
       type: ObjectId,
       ref: 'Proyecto',

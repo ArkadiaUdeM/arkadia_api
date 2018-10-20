@@ -7,6 +7,7 @@ require('../api/models/proyecto')
 require('../api/models/paquete')
 require('../api/models/historiaDeUsuario')
 require('../api/models/rol')
+require('../api/models/zonaParqueo')
 
 const db = mongoose.connect(
   keys.mongoURI,

@@ -26,3 +26,14 @@ exports.create = function(req, res) {
     utils.show(res, err, historiaDeUsuario)
   })
 }
+
+exports.update = function(req, res) {
+  HistoriaDeUsuario.findByIdAndUpdate(
+    { _id: req.params.historiaId },
+    req.body,
+    { new: true },
+    function(err, historia) {
+      utils.show(res, err, historia)
+    },
+  )
+}
